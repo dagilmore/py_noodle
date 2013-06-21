@@ -1,7 +1,6 @@
-import config
-
 __author__ = 'dgilmore'
 
+import config
 from flask import render_template, flash, redirect
 from flask import Blueprint, jsonify
 from forms import LoginForm
