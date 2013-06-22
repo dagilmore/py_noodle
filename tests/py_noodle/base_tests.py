@@ -1,23 +1,28 @@
 __author__ = 'dgilmore'
 
-from flask import Flask
-from nose.tools import eq_
-
+import os
+import tempfile
 import json
+
 import unittest
+from nose.tools import eq_
+from runserver import app
+from database import init_db
 
-from py_noodle.views import base
 
-
-class PyNoodleTests(unittest.TestCase):
+class PyNoodleBaseTests(unittest.TestCase):
     """
-    Test base package views
+    Base package unit tests
     """
     def setUp(self):
-        app = Flask(__name__)
-        app.register_blueprint(base, url_prefix='')
+        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
         app.config['TESTING'] = True
         self.app = app.test_client()
+        init_db()
+
+    def tearDown(self):
+        os.close(self.db_fd)
+        os.unlink(app.config['DATABASE'])
 
     def test_hello_world(self):
         """
@@ -45,6 +50,20 @@ class PyNoodleTests(unittest.TestCase):
 
     def test_login(self):
         pass
+
+    def test_tech_blog__get_posts(self):
+        """
+        Render posts appropriately
+        """
+        res = self.app.get(
+            '/tech/test_category',
+            content_type='application/json'
+        )
+        eq_(res.status_code, 200)
+
+    def test_tech_blog__create_posts(self):
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
