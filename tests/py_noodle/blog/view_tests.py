@@ -1,4 +1,4 @@
-__author__ = 'dgilmore'
+__author__ = 'dagilmore'
 
 import os
 import tempfile
@@ -10,7 +10,7 @@ from runserver import app
 from database import init_db
 
 
-class PyNoodleBaseTests(unittest.TestCase):
+class PyNoodleViewTests(unittest.TestCase):
     """
     Base package unit tests
     """

@@ -1,4 +1,4 @@
-__author__ = 'dgilmore'
+__author__ = 'dagilmore'
 
 
 CSRF_ENABLED = True
