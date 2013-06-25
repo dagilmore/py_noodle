@@ -1,4 +1,4 @@
-__author__ = 'dgilmore'
+__author__ = 'dagilmore'
 
 #!/usr/bin/env python
 from setuptools import find_packages, setup
