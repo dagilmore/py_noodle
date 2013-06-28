@@ -1,0 +1,118 @@
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -40px;
+    width: 100%;
+    background: url(/static/assets/img/drummin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='drummin.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='drummin.jpg', sizingMethod='scale')";
+    z-index: 1;
+}
+
+#push, #footer {
+    height: 40px;
+}
+
+#footer {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 767px) {
+    #footer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+}
+
+#wrap > .container {
+    padding-top: 40px;
+}
+
+.container .credit {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.container {
+    padding-left: 0px !important;
+}
+
+code {
+    font-size: 80%;
+}
+
+#arrow-button-left {
+    background-image: url(/static/assets/img/arrow-large-sprite2.png);
+    background-repeat: no-repeat;
+    background-position: 0 -301px;
+    margin-top: 10%;
+    width:144px;
+    height:300px;
+    position: absolute;
+    top: 5%;
+    left:0;
+}
+
+#arrow-button-left:hover {
+    background-position: 0 0;
+
+}
+
+#arrow-left-text {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 94px;
+    height: 161px;
+    padding-top: 139px;
+    padding-left: 50px;
+    color:rgb(254, 119, 27);
+}
+
+#arrow-left-text:hover {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+#arrow-button-right {
+    background-image: url(/static/assets/img/arrow-large-sprite.png);
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+    margin-top: 10%;
+    width:144px;
+    height:300px;
+    position: absolute;
+    top: 5%;
+    right:0;
+}
+
+#arrow-button-right:hover {
+    background-position: 0 -301px;
+}
+
+#arrow-right-text {
+    position: absolute;
+    top: 0;
+    right:0;
+    width: 124px;
+    height: 161px;
+    padding-top: 139px;
+    padding-left: 20px;
+    color:rgb(254, 119, 27);
+}
+
+#arrow-right-text:hover {
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+}

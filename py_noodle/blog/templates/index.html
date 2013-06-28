@@ -1,7 +1,50 @@
 {% extends "base.html" %}
-{% block content %}
-<h1>Hi, {{user.nickname}}!</h1>
-{% for post in posts %}
-<div><p>{{post.author.nickname}} says: <b>{{post.body}}</b></p></div>
-{% endfor %}
+
+{% block page_specific_css %}
+<link href="/static/assets/css/home-style.css" rel="stylesheet">
 {% endblock %}
+
+{% block content %}
+<div id="arrow-button-left"><a id="arrow-left-text" href="{{ '/tech' }}">Left Brain</a></div>
+<div id="arrow-button-right"><a id="arrow-right-text" href="{{ '/music' }}">Right Brain</a></div>
+{% endblock %}
+
+{% block photo_credit %}
+<div class="span5 pull-right">
+    <p class="muted credit">Photo by <a class="orange" href="https://www.facebook.com/pages/Lauren-Rogala-Creative-Studio/104111876381489" target="_blank_">Lauren Rogala Creative Studio</a></p>
+</div>
+{% endblock %}
+
+{% block page_specific_js %}
+<script>
+$('#arrow-button-left').on({
+    mouseenter: function() {
+        var $this = $("#arrow-left-text"); // caching $(this)
+        $this.data('initialText', $this.text());
+        $this.text("Technology");
+    }
+});
+$('#arrow-button-left').on({
+    mouseleave: function() {
+        var $this = $("#arrow-left-text"); // caching $(this)
+        $this.data('initialText', $this.text());
+        $this.text("Left Brain");
+    }
+});
+$('#arrow-button-right').on({
+    mouseenter: function() {
+        var $this = $("#arrow-right-text"); // caching $(this)
+        $this.data('initialText', $this.text());
+        $this.text("Music");
+    }
+});
+$('#arrow-button-right').on({
+    mouseleave: function() {
+        var $this = $("#arrow-right-text"); // caching $(this)
+        $this.data('initialText', $this.text());
+        $this.text("Right Brain");
+    }
+});
+</script>
+{% endblock %}
+
