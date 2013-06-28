@@ -1,23 +1,104 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     {% if title %}
-    <title>{{title}} - microblog</title>
+    <title>{{title}}</title>
     {% else %}
-    <title>microblog</title>
+    <title>David Gilmore</title>
     {% endif %}
-  </head>
-  <body>
-    <div>Microblog: <a href="/index">Home</a></div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-    {% for message in messages %}
-        <li>{{ message }} </li>
-    {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+{% if title == "Blog" %}
+<body id="spyOnThis" data-spy="scroll" data-target="#sidenavbar">
+{% else %}
+<body>
+{% endif %}
+
+<!-- Fav and touch icons -->
+{% assets
+    'assets/img/favicon.png',
+    "assets/ico/apple-touch-icon-144-precomposed.png",
+    "assets/ico/apple-touch-icon-114-precomposed.png",
+    "assets/ico/apple-touch-icon-72-precomposed.png",
+    "assets/ico/apple-touch-icon-57-precomposed.png",
+    "assets/js/html5shiv.js" %}
+    <link rel="shortcut icon" href="{{ ASSET_URL }}">
+{% endassets %}
+
+<!-- CSS -->
+{% assets filters='cssmin', output='gen/style.css',
+    'assets/css/bootstrap.css',
+    'assets/css/bootstrap-responsive.css',
+    'assets/css/base-style.css' %}
+<link href="{{ ASSET_URL }}" rel="stylesheet">
+{% endassets %}
+{% block page_specific_css %}{% endblock %}
+
+{# Part 1: Wrap all page content here #}
+<div id="wrap">
+{# Fixed navbar #}
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="{{ '/' }}" >David Gilmore</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">Tech <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ '/tech/about' }}">About</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Algorithm Studies</li>
+                <li><a href="{{ '/tech/text_factor' }}">Text Factorization</a></li>
+              </ul>
+            <li><a href="{{ '/music' }}">Music</a></li>
+            <li><a href="{{ '/contact' }}">Contact</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+</div>
+{# Begin page content #}
+{% block content %}{% endblock %}
+<div id="push"></div>
+</div>
+<div id="footer">
+  <div class="container">
+    {% block social %}{% endblock %}
+    {% block photo_credit %}{% endblock %}
+   </div>
+</div>
+
+<!-- JS -->
+{% assets filters='rjsmin', output='gen/packed.js',
+    'assets/js/jquery.js',
+    'assets/js/bootstrap-transition.js',
+    'assets/js/bootstrap-alert.js',
+    'assets/js/bootstrap-modal.js',
+    'assets/js/bootstrap-dropdown.js',
+    'assets/js/bootstrap-scrollspy.js',
+    'assets/js/bootstrap-tab.js',
+    'assets/js/bootstrap-tooltip.js',
+    'assets/js/bootstrap-popover.js',
+    'assets/js/bootstrap-button.js',
+    'assets/js/bootstrap-collapse.js',
+    'assets/js/bootstrap-carousel.js',
+    'assets/js/bootstrap-typeahead.js',
+    'assets/js/bootstrap-affix.js',
+    'assets/js/holder.js',
+    'assets/js/prettify.js',
+    'assets/js/application.js' %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% block page_specific_js %}{% endblock %}
+</body>
 </html>
