@@ -2,69 +2,71 @@ __author__ = 'dagilmore'
 
 from database import engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from py_noodle.blog.models import Blog
+from py_noodle.blog.models import Post
 
 # create a Session
 session = scoped_session(sessionmaker(bind=engine, autocommit=True))
 
 
-def save(blog):
+def save(post):
     """
-
-    :param blog:
+    Save a post
+    :param post:
     :return:
     """
-    session.add(blog)
+    session.add(post)
+    session.flush()
 
-def delete(blog):
+def delete(post):
     """
-    Delete a blog
-    :param Blog:
+    Delete a post
+    :param Post:
     """
-    session.delete(blog)
+    session.delete(post)
+    session.flush()
 
-def delete_blog_by_title(title):
+def delete_post_by_title(title):
     """
-    Delete a blog by title
+    Delete a post by title
     :param title:
     """
-    session.query(Blog).filter(Blog.title == title).delete()
+    session.query(Post).filter(Post.title == title).delete()
 
-def delete_blog_by_id(id):
+def delete_post_by_id(id):
     """
-    Delete a blog by id
+    Delete a post by id
     :param id:
     """
-    session.query(Blog).filter(Blog.id == id).delete()
+    session.query(Post).filter(Post.id == id).delete()
 
-def list_all_blogs(limit=None):
+def list_all_posts(limit=None):
     """
-    List all blogs
+    List all posts
     :param limit:
-    :return: A list of blogs
+    :return: A list of posts
     """
     if limit:
-        return session.query(Blog).limit(limit)
+        return session.query(Post).limit(limit)
     else:
-        return session.query(Blog).all()
+        return session.query(Post).all()
 
-def get_blogs_by_category(category, limit=None):
+def get_posts_by_category(category, limit=None):
     """
-    List blogs of a certain category
+    List posts of a certain category
     :param category:
     :param limit:
-    :return: A list of blogs
+    :return: A list of posts
     """
     if limit:
-        return session.query(Blog).filter(Blog.category == category).limit(limit)
+        return session.query(Post).filter(Post.category == category).limit(limit)
     else:
-        return session.query(Blog).filter(Blog.category == category)
+        return session.query(Post).filter(Post.category == category)
 
-def get_blog_by_title(title):
+def get_post_by_title(title):
     """
-    Find a blog by title
+    Find a post by title
     :param title:
-    :return: A blog
+    :return: A post
     """
-    return session.query(Blog).filter(Blog.title == title).first()
+    return session.query(Post).filter(Post.title == title).first()
 

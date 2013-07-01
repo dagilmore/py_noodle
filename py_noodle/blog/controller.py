@@ -1,10 +1,17 @@
 __author__ = 'dagilmore'
 
-import config
-from flask import render_template, flash, redirect
-from flask import Blueprint, jsonify
-from flask import request
-from py_noodle.blog import repository
+from flask import (
+    render_template,
+    Blueprint,
+    jsonify,
+    request,
+    session,
+    abort,
+)
+from py_noodle.blog import (
+    repository,
+    service,
+)
 
 blog = Blueprint('blog', __name__, template_folder='templates')
 
@@ -69,35 +76,36 @@ def about():
         title='About',
     )
 
-@blog.route('/tech/<category>', methods=['GET'])
-def get_tech_blog(category):
+@blog.route('/tech/<category>/', methods=['GET'])
+def get_posts_by_category(category):
     """
     Get a tech blog by category
 
     GET simply returns login form.
 
     """
-    posts = repository.get_blogs_by_category(category)
+    posts = repository.get_posts_by_category(category)
 
-    return render_template('blog.html',
-        title=category,
-        posts=posts,
-    )
+    if posts:
+        return render_template('blog.html',
+            title=category,
+            posts=posts,
+        )
+    else:
+        return render_template('page_not_found.html',
+            title='Oops',
+        )
 
-@blog.route('/tech/<category>', methods=['POST'])
-def create_tech_blog(category):
+@blog.route('/create_posts/', methods=['GET', 'POST'])
+def create_posts():
     """
-    :param title:
-    :param slug:
-    :param category:
-    :param body:
+    Create posts
     :return:
     """
-    # try:
-    #     repository.save(request.form)
-    # except KeyError:
-    #     redirect(
-    #         'tech/{0}'.format(category),
-    #         message='An error occurred'
-    #     )
-    return True
+    if not session.get('logged_in'):
+        abort(401)
+    if request.method == 'GET':
+        return render_template('create_post.html')
+    elif request.method == 'POST':
+        service.save(request.form)
+        return render_template('create_post.html')

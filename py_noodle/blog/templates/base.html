@@ -10,28 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <!-- Fav and touch icons -->
+    {% assets "assets/img/favicon.png" %}
+        <link rel="shortcut icon" href="{{ ASSET_URL }}">
+    {% endassets %}
+
+    <!-- CSS -->
+    {% assets filters='cssmin', output='gen/style.css',
+        'assets/css/bootstrap.css',
+        'assets/css/bootstrap-responsive.css',
+        'assets/css/base-style.css' %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet">
+    {% endassets %}
+    {% block page_specific_css %}{% endblock %}
 </head>
-{% if title == "Blog" %}
+{# Part 1: Wrap all page content here #}
+{% if posts %}
 <body id="spyOnThis" data-spy="scroll" data-target="#sidenavbar">
 {% else %}
 <body>
 {% endif %}
-
-<!-- Fav and touch icons -->
-{% assets "assets/img/favicon.png" %}
-    <link rel="shortcut icon" href="{{ ASSET_URL }}">
-{% endassets %}
-
-<!-- CSS -->
-{% assets filters='cssmin', output='gen/style.css',
-    'assets/css/bootstrap.css',
-    'assets/css/bootstrap-responsive.css',
-    'assets/css/base-style.css' %}
-<link href="{{ ASSET_URL }}" rel="stylesheet">
-{% endassets %}
-{% block page_specific_css %}{% endblock %}
-
-{# Part 1: Wrap all page content here #}
 <div id="wrap">
 {# Fixed navbar #}
 <div class="navbar navbar-fixed-top">
@@ -51,27 +50,18 @@
                 <li><a href="{{ '/tech/about' }}">About</a></li>
                 <li class="divider"></li>
                 <li class="nav-header">Algorithm Studies</li>
-                <li><a href="{{ '/tech/text_factor' }}">Text Factorization</a></li>
+                <li><a href="{{ '/tech/buzz/' }}">Text Factorization</a></li>
               </ul>
             <li><a href="{{ '/music' }}">Music</a></li>
             <li><a href="{{ '/contact' }}">Contact</a></li>
-
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 </div>
+</div>
 {# Begin page content #}
 {% block content %}{% endblock %}
-<div id="push"></div>
-</div>
-<div id="footer">
-  <div class="container">
-    {% block social %}{% endblock %}
-    {% block photo_credit %}{% endblock %}
-   </div>
-</div>
-
 <!-- JS -->
 {% assets filters='rjsmin', output='gen/packed.js',
     'assets/js/jquery.js',
@@ -93,6 +83,12 @@
     'assets/js/application.js' %}
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
+<div id="footer">
+  <div class="container">
+    {% block social %}{% endblock %}
+    {% block photo_credit %}{% endblock %}
+   </div>
+</div>
 {% block page_specific_js %}{% endblock %}
 </body>
 </html>

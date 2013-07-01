@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="block">
+    <div class="centered">
+        <div class="span9">
+        <form action="{{ '/create_posts/' }}" method="post">
+        <div class="row">
+            <div class="span3">
+            <label>Title</label>
+            <input name="title" id="title" type="text" class="span3" placeholder="title">
+            <label>Slug</label>
+            <input name="slug" id="slug" type="text" class="span3" placeholder="slug">
+            <label>Category</label>
+            <input name="category" id="category" type="text" class="span3" placeholder="category">
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9">
+                <label>Body</label>
+                <textarea name="body" id="body" class="input-xlarge span6" rows="8"></textarea>
+            </div>
+        </div>
+        <div class="row">
+        <div class="span3">
+        <button class="btn btn-large btn-block btn-custom text-center" type="submit">Create Post</button>
+        </div>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

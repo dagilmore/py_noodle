@@ -2,72 +2,83 @@
 
 {% block page_specific_css %}
 <style type="text/css">
-      #music-head {
-          background-image: url(/static/assets/img/drumming2.jpg);
-          background-repeat: no-repeat;
-          height: 280px;
-          padding-top: 55px;
+#music-head {
+    background-image: url(/static/assets/img/drumming2.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 280px;
+    padding-top: 55px;
 
-      }
-      #music-head h1 {
-          color:rgb(254, 119, 27);
-          font-family: 'Droid Serif', serif;
-          font-size: 50px;
-          line-height: 55px;
-          padding-left: 40px;
-      }
-      @media (min-width: 767px) {
-        #height-limit img { height: 270px; }
-      }
+}
+#music-head h1 {
+    color:rgb(254, 119, 27);
+    font-family: 'Droid Serif', serif;
+    font-size: 50px;
+    line-height: 55px;
+    padding-left: 40px;
+    text-align: left;
+}
+@media (min-width: 767px) {
+    #height-limit img {
+        height: 270px;
+    }
+}
+@media (max-width: 779px) {
+    .centered {
+        width: 90%;
+    }
+}
 </style>
 {% endblock %}
 {% block content %}
-<div class="offset1">
-<div class='row'><div class='span10'>
-    <hr> </hr>
-</div></div>
-<div class="row">
-    <div class="span11" id="music-head">
-      <h1>I play music; <br /> mainly drums</h1>
-    </div>
-</div>
-<div class='row'><div class='span10'>
-    <hr> </hr>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;I have been playing drum set and percussion for about 10 years now.
-        My primary interests are world percussion, jazz and indie rock.
-        Currently, my main project is a band called the <a href="http://www.theastrochimps.com" target="_blank_" class="orange">The Astrochimps</a>;
-        we are a rock group most comparable to The Strokes, Arctic Monkeys, Foals, and Bloc Party.
-        Check out the music projects I am/have been involved with.</p>
-    <hr> </hr>
-</div></div>
+<div class="block">
+    <div class="centered">
+        <div class='row'><div class='span10'>
+            <hr> </hr>
+        </div></div>
+        <div class="row">
+            <div class="span10" id="music-head">
+              <h1>I play music; <br /> mainly drums</h1>
+            </div>
+        </div>
+        <div class='row'><div class='span10'>
+            <hr> </hr>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;I have been playing drum set and percussion for about 10 years now.
+                My primary interests are world percussion, jazz and indie rock.
+                Currently, my main project is a band called the <a href="http://www.theastrochimps.com" target="_blank_" class="orange">The Astrochimps</a>;
+                we are a rock group most comparable to The Strokes, Arctic Monkeys, Foals, and Bloc Party.
+                Check out the music projects I am/have been involved with.</p>
+            <hr> </hr>
+        </div></div>
 
-<div class="row">
-        <div class="span7" id="height-limit">
-          <a href="http://www.theastrochimps.com" target="_blank_"><img src="/static/assets/img/astrochimps-wide.png" /></a>
-          <h2>The Astrochimps</h2>
-           <p>I play drum set and percussion in The Astrochimps</p>
-          <p><a class="btn" href="http://www.theastrochimps.com" target="_blank_">Check us out! &raquo;</a></p>
+        <div class="row">
+                <div class="span7" id="height-limit">
+                  <a href="http://www.theastrochimps.com" target="_blank_"><img src="/static/assets/img/astrochimps-wide.png" /></a>
+                  <h2>The Astrochimps</h2>
+                   <p>I play drum set and percussion in The Astrochimps</p>
+                  <p><a class="btn" href="http://www.theastrochimps.com" target="_blank_">Check us out! &raquo;</a></p>
+                </div>
+                <div class="span3">
+                  <a href="http://www.reverbnation.com/maxwelshinger" target="_blank_"><img src="/static/assets/img/max.jpg" /></a>
+                  <h2>Max Welshinger</h2>
+                   <p>I played drum set on Max's last EP. A second one is on its way!</p>
+                  <p><a class="btn" href="http://www.reverbnation.com/maxwelshinger" target="_blank_">Check him out! &raquo;</a></p>
+               </div>
         </div>
-        <div class="span3">
-          <a href="http://www.reverbnation.com/maxwelshinger" target="_blank_"><img src="/static/assets/img/max.jpg" /></a>
-          <h2>Max Welshinger</h2>
-           <p>I played drum set on Max's last EP. A second one is on its way!</p>
-          <p><a class="btn" href="http://www.reverbnation.com/maxwelshinger" target="_blank_">Check him out! &raquo;</a></p>
-       </div>
-</div>
-<div class='row'><div class='span10'><hr> </hr></div></div>
-<div class="row">
-        <div class="span4" id="height-limit">
-          <img src="/static/assets/img/tabla.jpg" />
-          <h2>Tabla/World Percussion</h2>
-           <p>I am currently working on a world percussion/jazz EP. Stay tuned!</p>
-       </div>
-        <div class="span6" id="height-limit">
-          <a href="http://troubleinmindrecs.com/bands/paperhead.html" target="_blank_"><img src="/static/assets/img/paperhead.jpg" /></a>
-          <h2>The Paperhead</h2>
-           <p>I recorded tablas on The Paperhead's self-titled album</p>
-          <p><a class="btn" href="http://troubleinmindrecs.com/bands/paperhead.html" target="_blank_">Check them out! &raquo;</a></p>
+        <div class='row'><div class='span10'><hr></hr></div></div>
+        <div class="row">
+                <div class="span4" id="height-limit">
+                  <img src="/static/assets/img/tabla.jpg" />
+                  <h2>Tabla/World Perc</h2>
+                   <p>I am currently working on a world percussion/jazz EP. Stay tuned!</p>
+               </div>
+                <div class="span6" id="height-limit">
+                  <a href="http://troubleinmindrecs.com/bands/paperhead.html" target="_blank_"><img src="/static/assets/img/paperhead.jpg" /></a>
+                  <h2>The Paperhead</h2>
+                   <p>I recorded tablas on The Paperhead's self-titled album</p>
+                  <p><a class="btn" href="http://troubleinmindrecs.com/bands/paperhead.html" target="_blank_">Check them out! &raquo;</a></p>
+                </div>
         </div>
-</div>
+    </div>
 </div>
 {% endblock %}

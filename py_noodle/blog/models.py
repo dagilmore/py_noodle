@@ -2,18 +2,18 @@ __author__ = 'dagilmore'
 
 import datetime
 
-from sqlalchemy import Column, Integer, String, UnicodeText, DateTime
+import sqlalchemy as db
 from database import Base
 
 
-class Blog(Base):
-    __tablename__ = 'blogs'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String(50), unique=True)
-    slug = Column(String(50), unique=True)
-    category = Column(String(50))
-    body = Column(UnicodeText)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+class Post(Base):
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(50), unique=True)
+    slug = db.Column(db.String(50), unique=True)
+    category = db.Column(db.String(50))
+    body = db.Column(db.String)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(
             self,

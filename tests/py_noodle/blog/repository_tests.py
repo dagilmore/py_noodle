@@ -7,7 +7,7 @@ import unittest
 from runserver import app
 from database import init_db
 from py_noodle.blog import repository
-from py_noodle.blog.models import Blog
+from py_noodle.blog.models import Post
 
 class PyNoodleRepositoryTests(unittest.TestCase):
     """
@@ -23,47 +23,47 @@ class PyNoodleRepositoryTests(unittest.TestCase):
         os.close(self.db_fd)
         os.unlink(app.config['DATABASE'])
 
-    def test_save_blog(self):
+    def test_save_post(self):
         """
-        Save a blog
+        Save a post
         """
-        blog = Blog(
+        post = Post(
             title='the title',
             slug='the-title',
             category='buzz',
             body='yo python is dope',
         )
-        repository.save(blog)
+        repository.save(post)
 
-    def test_list_all_blogs(self):
+    def test_list_all_post(self):
         """
-        List blogs
+        List posts
         """
-        blogs = repository.list_all_blogs()
+        posts = repository.list_all_posts()
 
-    def test_list_all_blogs__limit(self):
+    def test_list_all_posts__limit(self):
         """
-        List specified amount of blogs
+        List specified amount of posts
         """
-        repository.list_all_blogs(30)
+        repository.list_all_posts(30)
 
-    def test_get_blogs_by_category(self):
+    def test_get_posts_by_category(self):
         """
-        List blogs by category
+        List posts by category
         """
-        repository.list_all_blogs()
+        repository.list_all_posts()
 
-    def test_get_blogs_by_category__(self):
+    def test_get_posts_by_category__(self):
         """
-        List specified amount of blogs by category
+        List specified amount of posts by category
         """
-        repository.list_all_blogs()
+        repository.get_posts_by_category('buzz')
 
-    def test_get_blog_by_title(self):
+    def test_get_post_by_title(self):
         """
-        Get blog by title
+        Get post by title
         """
-        repository.get_blog_by_title('title')
+        repository.get_post_by_title('title')
 
 
 if __name__ == '__main__':

@@ -20,34 +20,38 @@
 {% endblock %}
 
 {% block content %}
-<div class="offset1 span9">
-<h1>Say Hello...</h1>
-    <br />
-    <p>
-        if you want to sing out, sing out;
-        And if you want to be free, be free
-    </p>
-    <br />
-<form action="{{ '/contact/' }}" method="post">
-<div class="row">
-    <div class="span3">
-    <label>First Name</label>
-    <input type="text" class="span3" placeholder="Your First Name">
-    <label>Last Name</label>
-    <input type="text" class="span3" placeholder="Your Last Name">
-    <label>Email Address</label>
-    <input type="text" class="span3" placeholder="Your Email Address">
+<div class="block">
+    <div class="centered">
+        <div class="span9">
+        <h1>Say Hello...</h1>
+            <br />
+            <p>
+                if you want to sing out, sing out;
+                And if you want to be free, be free
+            </p>
+            <br />
+        <form action="{{ '/contact/' }}" method="post">
+        <div class="row">
+            <div class="span3">
+            <label>First Name</label>
+            <input type="text" class="span3" placeholder="Your First Name">
+            <label>Last Name</label>
+            <input type="text" class="span3" placeholder="Your Last Name">
+            <label>Email Address</label>
+            <input type="text" class="span3" placeholder="Your Email Address">
+            </div>
+            <div class="span6">
+                <label>Message</label>
+                <textarea name="message" id="message" class="input-xlarge span6" rows="8"></textarea>
+            </div>
+        </div>
+        <div class="row">
+        <div class="span3">
+        <button class="btn btn-large btn-block btn-custom text-center" type="submit">Submit</button>
+        </div>
+        </div>
+        </form>
+        </div>
     </div>
-    <div class="span6">
-        <label>Message</label>
-        <textarea name="message" id="message" class="input-xlarge span6" rows="8"></textarea>
-    </div>
-</div>
-<div class="row">
-<div class="span3">
-<button class="btn btn-large btn-block btn-custom text-center" type="submit">Submit</button>
-</div>
-</div>
-</form>
 </div>
 {% endblock %}

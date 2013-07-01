@@ -2,71 +2,81 @@
 
 {% block page_specific_css %}
 <style type="text/css">
+#main-image {
+    float: left;
+    width: 330px;
+    height: 300px;
+    padding-right: 5%;
+}
+@media (max-width: 779px) {
     #main-image {
-        float: left;
-        width: 330px;
-        height: 300px;
-        padding-right: 5%;
+        display: none;
     }
+    .centered {
+        width: 90%;
+    }
+}
 </style>
 {% endblock %}
 {% block content %}
-<div class="offset1">
-<div class='row'><div class='span10'>
-<hr> </hr>
-</div></div>
-<div class="row">
-<div class="span10">
-    <img id="main-image" src="/static/assets/img/tech_about.jpg"></img>
-    <h1 class="text-center">I'm a super nerd...</h1>
-    <p>
-    &nbsp;&nbsp;&nbsp;&nbsp;I spend hours with my laptop in random parts of Nashville
-    hacking out code. My primary interests are <a href="{{ '/textFactor' }}" class="orange" target="_blank_">data science</a> and server side web development. On this
-    journey, Java has been my right hand man, and Python and I are really hitting it off.
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;I used to be into Wordpress <a href="{{ '/textFactor' }}" class="orange" target="_blank_">freelance work</a>. I'm no longer
-    taking any work with that at the moment, but I do get an itch to do some front end code every now and then. It usually doesn't last too long...
-    <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;Currently, I'm working at a
-    <a href="http://www.myemma.com" target="_blank_" class="orange">super-awesome e-mail marketing company</a>
-    developing with Python.
-    </p>
-</div>
-</div>
-<div class='row'><div class='span10'>
-    <hr> </hr>
-</div></div>
-<div class="row">
-<div class="text-center"><h2>Some stuff I like a lot</h2></div>
-<div class="span10">
-<table class="table">
-  <thead>
-    <tr>
-      <th>Web</th>
-      <th>Data Science</th>
-      <th>Misc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Java/Spring</td>
-      <td>(py)Spark</td>
-      <td>AWS!!!</td>
-    </tr>
-    <tr>
-      <td>Python/Flask</td>
-      <td>More Python</td>
-      <td><a href="http://xkcd.com/323/" class="orange" target="_blank_">Ballmer Peak</a></td>
-    </tr>
-    <tr>
-      <td>Wordpress</td>
-      <td>Hadoop</td>
-      <td>My GMC Burban</td>
+    <div class="block">
+        <div class="centered">
+            <div class='row'><div class='span10'>
+            <hr> </hr>
+            </div></div>
+            <div class="row">
+            <div class="span10">
+                <img id="main-image" src="/static/assets/img/tech_about.jpg"></img>
+                <h1 class="text-center">I'm a super nerd...</h1>
+                <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;I spend hours with my laptop in random parts of Nashville
+                hacking out code. My primary interests are data science and server side web development. On this
+                journey, Java has been my right hand man, and Python and I are really hitting it off.
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;I used to be into Wordpress free-lance work. I'm no longer
+                taking any work with that at the moment, but I do get an itch to do some front end code every now and then. It usually doesn't last too long...
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;Currently, I'm working at a
+                <a href="http://www.myemma.com" target="_blank_" class="orange">super-awesome e-mail marketing company</a>
+                developing with Python.
+                </p>
+            </div>
+            </div>
+            <div class='row'><div class='span10'>
+                <hr> </hr>
+            </div></div>
+            <div class="row">
+            <div class="text-center"><h2>Some stuff I like a lot</h2></div>
+            <div class="span10">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Web</th>
+                  <th>Data Science</th>
+                  <th>Misc</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Java/Spring</td>
+                  <td>(py)Spark</td>
+                  <td>AWS!!!</td>
+                </tr>
+                <tr>
+                  <td>Python/Flask</td>
+                  <td>More Python</td>
+                  <td><a href="http://xkcd.com/323/" class="orange" target="_blank_">Ballmer Peak</a></td>
+                </tr>
+                <tr>
+                  <td>Wordpress</td>
+                  <td>Hadoop</td>
+                  <td>My GMC Burban</td>
 
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

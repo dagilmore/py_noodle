@@ -81,7 +81,7 @@ class PyNoodleViewTests(unittest.TestCase):
     #
     #     eq_(res.status_code, 200)
 
-    def test_tech_blog__get_posts(self):
+    def test_blog__get_posts(self):
         """
         Render posts appropriately
         """
@@ -91,8 +91,16 @@ class PyNoodleViewTests(unittest.TestCase):
         )
         eq_(res.status_code, 200)
 
-    def test_tech_blog__create_posts(self):
-        pass
+    def test_blog_create_posts__get(self):
+        """
+        Render post creation page
+        """
+        res = self.app.get(
+            '/admin/posts',
+            content_type='application/json'
+        )
+        eq_(res.status_code, 200)
+
 
 
 if __name__ == '__main__':

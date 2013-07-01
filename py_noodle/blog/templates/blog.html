@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block page_specific_css %}
+<style type="text/css">
+.bs-docs-sidenav {
+  width: 228px;
+  margin: 30px 0 0;
+  padding: 0;
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.bs-docs-sidenav > li > a {
+  display: block;
+  width: inherit;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+  color:rgb(119, 119, 119);
+}
+.bs-docs-sidenav > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+.bs-docs-sidenav > .active > a,
+.bs-docs-sidenav > .active > a:hover,
+.bs-docs-sidenav > .active > a:focus
+{
+    background-color: rgb(254, 119, 27);
+}
+#sidenavbar{
+    padding: 9px 0;
+    position:fixed;
+    left:30px;
+    top:10%;
+}
+@media (min-width: 1068px) {
+    .centered {
+        margin-right: 5%;
+        width:65%;
+    }
+}
+@media (min-width: 980px) {
+    .centered {
+        margin-left: 25%;
+        width:65%;
+    }
+    #sidenavbar { display: inline !important; }
+}
+@media (max-width: 979px) {
+    .centered {
+        width: 90%;
+    }
+    #sidenavbar { display: none !important; }
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="span4 sidebar">
+  <div id="sidenavbar">
+    {% if posts %}
+    <ul class="nav nav-list bs-docs-sidenav affix">
+        {% for post in posts %}
+        <li><a href="#{{ post.slug }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+  </div>
+    {% endif %}
+  </div>
+<div class="block">
+<div class="centered">
+  <div>
+    {% if posts %}
+
+        {% for post in posts %}
+        <h3 id="{{ post.slug }}">{{ post.title }}</h3>
+        <div>{{ post.body }}</div>
+        <hr> </hr>
+        {% endfor %}
+
+    {% endif %}
+  </div>
+</div><!--centered-->
+</div><!--block-->
+</div><!--Row-->
+<script>
+$(document).ready(function(){
+    $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this).scrollspy('refresh')
+    });
+    $('#spyOnThis').scrollspy();
+    });
+</script>
+{% endblock %}
